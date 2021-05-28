@@ -1,8 +1,7 @@
-
-#Wayland Example Code
+# Wayland Example Code
 is wayland example code
 
-##Building
+## Building
 
 ```
 $ cd build/
@@ -17,5 +16,4 @@ $
 $ cd bin
 $ ./hello_wayland
 ```
-
 
