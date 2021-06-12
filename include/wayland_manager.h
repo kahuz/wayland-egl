@@ -25,8 +25,8 @@
 #define Log( fmt, args...)
 #endif  // #if DEBUG
 
-#define WINDOW_WIDTH 1280
-#define WINDOW_HEIGHT 720
+#define DEFAULT_WINDOW_WIDTH 1280
+#define DEFAULT_WINDOW_HEIGHT 720
 
 #define KEY_Q 16
 
@@ -52,8 +52,8 @@ struct WLDispInfo
 
 	EGLInfo egl_info;
 
-	uint16_t window_width;
-	uint16_t window_height;
+	uint16_t width;
+	uint16_t height;
 
 }typedef WLDispInfo;
 
@@ -104,6 +104,8 @@ class WLManager
 
 	public:
 		WLManager();
+		WLManager(char *window_title, int window_width, int window_height);
+
 		~WLManager();
 
 		void Init();

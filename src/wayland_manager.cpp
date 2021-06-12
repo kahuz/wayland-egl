@@ -192,6 +192,13 @@ static void pointer_handle_axis( void* data, struct wl_pointer* pointer, uint32_
 
 WLManager::WLManager()
 {
+	Init();
+}
+
+WLManager::WLManager(char *window_title, int window_width, int window_height)
+{
+	Init();
+	CreateWindowWithEGLContext(window_title, window_width, window_height);
 
 }
 
@@ -202,32 +209,11 @@ WLManager::~WLManager()
 	Log("Display disconnected !\n");
 }
 
+//Initializing and Registering Objects
 void WLManager::Init()
 {
 	InitWLClient();
 	InitWLSurface();
-}
-
-void WLManager::InitWLSurface()
-{
-	window.surface = wl_compositor_create_surface(wl_component.compositor);
-
-	//if (surface == NULL) {
-	if (window.surface == NULL) 
-	{
-		Log("No Compositor surface ! Yay....\n");
-		exit(1);
-	}
-	else 
-	{
-		Log("Got a compositor surface !\n");
-	}
-
-	//create window remote manager ( wl_shell )
-	window.shell_surface = wl_shell_get_shell_surface(wl_component.shell, window.surface);
-
-	//move window to top.
-	wl_shell_surface_set_toplevel(window.shell_surface);
 }
 
 void WLManager::InitWLClient()
@@ -277,6 +263,27 @@ void WLManager::InitWLClient()
 
 }
 
+void WLManager::InitWLSurface()
+{
+	window.surface = wl_compositor_create_surface(wl_component.compositor);
+
+	//if (surface == NULL) {
+	if (window.surface == NULL) 
+	{
+		Log("No Compositor surface ! Yay....\n");
+		exit(1);
+	}
+	else 
+	{
+		Log("Got a compositor surface !\n");
+	}
+
+	//create window remote manager ( wl_shell )
+	window.shell_surface = wl_shell_get_shell_surface(wl_component.shell, window.surface);
+
+	//move window to top.
+	wl_shell_surface_set_toplevel(window.shell_surface);
+}
 EGLBoolean WLManager::CreateWindowWithEGLContext(const char* title, int width, int height) 
 {
 	EGLBoolean ret = EGL_FALSE;
@@ -305,8 +312,8 @@ EGLBoolean WLManager::CreateWindowWithEGLContext(const char* title, int width, i
 		Log("Create EGL Surface\n");
 	}
 
-	disp_info.window_width = width;
-	disp_info.window_height = height;
+	disp_info.width = width;
+	disp_info.height = height;
 	disp_info.egl_info.native_window = disp_info.egl_window;
 
 	ret =  CreateEGLContext( &disp_info.egl_info );
@@ -419,11 +426,11 @@ void WLManager::Render()
 		wl_display_dispatch_pending(disp_info.egl_info.native_display);
 
 		resize_type |= WL_SHELL_SURFACE_RESIZE_TOP * 0;
-		resize_type |= WL_SHELL_SURFACE_RESIZE_BOTTOM * (WINDOW_HEIGHT+frame_no);
+		resize_type |= WL_SHELL_SURFACE_RESIZE_BOTTOM * (disp_info.height+frame_no);
 		resize_type |= WL_SHELL_SURFACE_RESIZE_LEFT * 0;
-		resize_type |= WL_SHELL_SURFACE_RESIZE_RIGHT * (WINDOW_WIDTH+frame_no);
+		resize_type |= WL_SHELL_SURFACE_RESIZE_RIGHT * (disp_info.width+frame_no);
 		//window resize func
-		wl_egl_window_resize(disp_info.egl_info.native_window, WINDOW_WIDTH + frame_no, WINDOW_HEIGHT + frame_no, 0, 0);
+		wl_egl_window_resize(disp_info.egl_info.native_window, disp_info.width + frame_no, disp_info.height + frame_no, 0, 0);
 
 		frame_no++;
 
