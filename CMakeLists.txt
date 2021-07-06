@@ -6,10 +6,12 @@ project( hello_wayland )
 set(SRC_FILES 
 	src/main.cpp
 	src/wayland_manager.cpp
+	src/gl_manager.cpp
 	)
 
 set(INC_DIR
 	include/
+	include/common/
 	)
 
 set(WL_LIB
