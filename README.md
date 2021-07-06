@@ -1,5 +1,5 @@
-# Wayland Example Code
-is wayland example code
+# Wayland-egl Example Code
+is wayland based egl example code
 
 ## Building
 
