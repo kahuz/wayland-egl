@@ -1,4 +1,26 @@
 #include "wayland_manager.h"
+#include "gl_manager.h"
+
+#define TEST_CODE // test GL Manager 
+
+#ifdef TEST_CODE
+GLShader *testShader;
+
+const char vShaderStr[] =  
+"attribute vec4 vPosition;    \n"
+"void main()                  \n"
+"{                            \n"
+"   gl_Position = vPosition;  \n"
+"}                            \n";
+
+const char fShaderStr[] =  
+"precision mediump float;\n"
+"void main()                                  \n"
+"{                                            \n"
+"  gl_FragColor = vec4 ( 1.0, 0.0, 0.0, 1.0 );\n"
+"}                                            \n";
+
+#endif
 
 static struct wl_shell_surface_listener shell_surface_listener = {
 	&shell_surface_ping,
@@ -25,7 +47,7 @@ static struct wl_pointer_listener pointer_listeners = {
 static void global_registry_handle(void *data, struct wl_registry *registry, uint32_t id, const char *interface, uint32_t version) 
 {
 	WLComponent *component = (WLComponent *)data;
-	Log("Got a registry event for %s id %d\n", interface, id);
+//	Log("Got a registry event for %s id %d\n", interface, id);
 	if (strcmp(interface, "wl_compositor") == 0)
 	{
 		Log("Create wl compositor\n");
@@ -189,7 +211,6 @@ static void pointer_handle_axis( void* data, struct wl_pointer* pointer, uint32_
 {
 
 }
-
 WLManager::WLManager()
 {
 	Init();
@@ -199,7 +220,6 @@ WLManager::WLManager(char *window_title, int window_width, int window_height)
 {
 	Init();
 	CreateWindowWithEGLContext(window_title, window_width, window_height);
-
 }
 
 WLManager::~WLManager()
@@ -284,6 +304,7 @@ void WLManager::InitWLSurface()
 	//move window to top.
 	wl_shell_surface_set_toplevel(window.shell_surface);
 }
+
 EGLBoolean WLManager::CreateWindowWithEGLContext(const char* title, int width, int height) 
 {
 	EGLBoolean ret = EGL_FALSE;
@@ -318,6 +339,10 @@ EGLBoolean WLManager::CreateWindowWithEGLContext(const char* title, int width, i
 
 	ret =  CreateEGLContext( &disp_info.egl_info );
 
+#ifdef TEST_CODE
+	testShader = new GLShader(vShaderStr, fShaderStr);
+	testShader->SetGLAttribLocation(GL_VERTEX_SHADER, "vPosition");
+#endif
 	wl_shell_surface_add_listener(window.shell_surface, &shell_surface_listener, &disp_info/* is send to listner*/);
 
 	return ret;
@@ -401,7 +426,27 @@ EGLBoolean WLManager::CreateEGLContext (EGLInfo *egl_info)
 void WLManager::Draw()
 {
 	glClearColor(0.5, 0.3, 0.0, 1.0);
-	glClear(GL_COLOR_BUFFER_BIT);
+
+#ifdef TEST_CODE
+	GLfloat vVertices[] = {  
+		0.0f,  0.5f, 0.0f, 
+		-0.5f, -0.5f, 0.0f,
+		0.5f, -0.5f, 0.0f };
+
+	// Set the viewport
+	glViewport ( 0, 0, disp_info.width, disp_info.height);
+
+	// Clear the color buffer
+	glClear ( GL_COLOR_BUFFER_BIT );
+
+	// Use the program object
+	glUseProgram ( testShader->program );
+
+	glEnableVertexAttribArray( testShader->vert_member.at("vPosition") );
+	glVertexAttribPointer ( testShader->vert_member.at("vPosition"), 3, GL_FLOAT, GL_FALSE, 0, vVertices );
+
+	glDrawArrays ( GL_TRIANGLES, 0, 3 );
+#endif
 }
 
 void WLManager::RefreshWindow(EGLInfo egl_info)
@@ -425,6 +470,7 @@ void WLManager::Render()
 		//see more wl_display_dispatch_pending into https://manpages.debian.org/experimental/libwayland-doc/wl_display.3.en.html page.
 		wl_display_dispatch_pending(disp_info.egl_info.native_display);
 
+		/*
 		resize_type |= WL_SHELL_SURFACE_RESIZE_TOP * 0;
 		resize_type |= WL_SHELL_SURFACE_RESIZE_BOTTOM * (disp_info.height+frame_no);
 		resize_type |= WL_SHELL_SURFACE_RESIZE_LEFT * 0;
@@ -438,6 +484,8 @@ void WLManager::Render()
 		{
 			frame_no = 0;
 		}
+		*/
+
 		//gles draw function
 		Draw();
 		//buffer swap
