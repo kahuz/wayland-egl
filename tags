@@ -64,9 +64,9 @@ ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	516
 ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	519;"	d	file:
 ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	522;"	d	file:
 ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	525;"	d	file:
-CMAKE_BINARY_DIR	build/Makefile	/^CMAKE_BINARY_DIR = \/home\/kahuz\/Share\/test_ugly\/ugly_wayland_key_mouse\/build$/;"	m
+CMAKE_BINARY_DIR	build/Makefile	/^CMAKE_BINARY_DIR = \/home\/kahuz\/Share\/wayland-manager\/build$/;"	m
 CMAKE_COMMAND	build/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
-CMAKE_SOURCE_DIR	build/Makefile	/^CMAKE_SOURCE_DIR = \/home\/kahuz\/Share\/test_ugly\/ugly_wayland_key_mouse$/;"	m
+CMAKE_SOURCE_DIR	build/Makefile	/^CMAKE_SOURCE_DIR = \/home\/kahuz\/Share\/wayland-manager$/;"	m
 COMPILER_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	108;"	d	file:
 COMPILER_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	115;"	d	file:
 COMPILER_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	122;"	d	file:
@@ -330,27 +330,37 @@ C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	625;"	d	file:
 C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	628;"	d	file:
 C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	630;"	d	file:
 C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	632;"	d	file:
-CreateEGLContext	src/init_window.cpp	/^EGLBoolean CreateEGLContext (EGLInfo *egl_info)$/;"	f
-CreateNativeWindow	src/init_window.cpp	/^EGLBoolean CreateNativeWindow(char *title, WLDispInfo *disp_info, struct wl_compositor *compositor, WLWindow *window, int width, int height) {$/;"	f
-CreateWindowWithEGLContext	src/init_window.cpp	/^EGLBoolean CreateWindowWithEGLContext(char *title, WLDispInfo *disp_info, struct wl_compositor *compositor, WLWindow *window, int width, int height) $/;"	f
+CheckError	src/gl_manager.cpp	/^int CheckError()$/;"	f
+CreateEGLContext	src/wayland_manager.cpp	/^EGLBoolean WLManager::CreateEGLContext (EGLInfo *egl_info)$/;"	f	class:WLManager
+CreateShader	src/gl_manager.cpp	/^GLuint GLShader::CreateShader(GLenum type, const char *shader_src)$/;"	f	class:GLShader
+CreateWindowWithEGLContext	src/wayland_manager.cpp	/^EGLBoolean WLManager::CreateWindowWithEGLContext(const char* title, int width, int height) $/;"	f	class:WLManager
 DEC	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	544;"	d	file:
 DEC	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	529;"	d	file:
-EGLInfo	include/init_window.h	/^struct EGLInfo$/;"	s
-EGLInfo	include/init_window.h	/^}typedef EGLInfo;$/;"	t
+DEFAULT_WINDOW_HEIGHT	include/wayland_manager.h	29;"	d
+DEFAULT_WINDOW_WIDTH	include/wayland_manager.h	28;"	d
+DeinitEGL	src/wayland_manager.cpp	/^void WLManager::DeinitEGL()$/;"	f	class:WLManager
+DeinitWindow	src/wayland_manager.cpp	/^void WLManager::DeinitWindow()$/;"	f	class:WLManager
+Draw	src/wayland_manager.cpp	/^void WLManager::Draw()$/;"	f	class:WLManager
+EGLInfo	include/wayland_manager.h	/^struct EGLInfo$/;"	s
+EGLInfo	include/wayland_manager.h	/^}typedef EGLInfo;$/;"	t
 EQUALS	build/Makefile	/^EQUALS = =$/;"	m
+Err	include/common/Logger.h	6;"	d
+Err	include/common/Logger.h	9;"	d
+GLRenderer	include/gl_manager.h	/^class GLRenderer$/;"	c
+GLShader	include/gl_manager.h	/^class GLShader$/;"	c
+GLShader	src/gl_manager.cpp	/^GLShader::GLShader()$/;"	f	class:GLShader
+GLShader	src/gl_manager.cpp	/^GLShader::GLShader(const char* vertex_src, const char* fragment_src)$/;"	f	class:GLShader
 HEX	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	555;"	d	file:
 HEX	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	540;"	d	file:
 ID_VOID_MAIN	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
-KEY_Q	include/init_window.h	31;"	d
-LOG	include/log.h	10;"	d
-LOG	include/log.h	16;"	d
-LOG	include/log.h	21;"	d
-LOG_ERRNO	include/log.h	11;"	d
-LOG_ERRNO	include/log.h	17;"	d
-LOG_ERRNO	include/log.h	22;"	d
-Log	include/init_window.h	23;"	d
-Log	include/init_window.h	25;"	d
-MYY_LOG_H	include/log.h	2;"	d
+Init	src/wayland_manager.cpp	/^void WLManager::Init()$/;"	f	class:WLManager
+InitWLClient	src/wayland_manager.cpp	/^void WLManager::InitWLClient()$/;"	f	class:WLManager
+InitWLSurface	src/wayland_manager.cpp	/^void WLManager::InitWLSurface()$/;"	f	class:WLManager
+KEY_Q	include/wayland_manager.h	31;"	d
+Log	include/common/Logger.h	5;"	d
+Log	include/common/Logger.h	8;"	d
+Log	include/wayland_manager.h	23;"	d
+Log	include/wayland_manager.h	25;"	d
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	339;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	342;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	345;"	d	file:
@@ -416,7 +426,8 @@ PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	414;"	d
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	417;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	421;"	d	file:
 RM	build/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
-RefreshWindow	src/init_window.cpp	/^void RefreshWindow(EGLInfo egl_info) { eglSwapBuffers(egl_info.display, egl_info.surface); }$/;"	f
+RefreshWindow	src/wayland_manager.cpp	/^void WLManager::RefreshWindow(EGLInfo egl_info)$/;"	f	class:WLManager
+Render	src/wayland_manager.cpp	/^void WLManager::Render()$/;"	f	class:WLManager
 SHELL	build/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SIMULATE_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	209;"	d	file:
 SIMULATE_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	21;"	d	file:
@@ -451,33 +462,43 @@ STRINGIFY	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	320;"	d	f
 STRINGIFY_HELPER	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	334;"	d	file:
 STRINGIFY_HELPER	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	319;"	d	file:
 SUFFIXES	build/Makefile	/^SUFFIXES =$/;"	m
-WINDOW_HEIGHT	include/init_window.h	29;"	d
-WINDOW_WIDTH	include/init_window.h	28;"	d
-WLComponent	include/init_window.h	/^struct WLComponent$/;"	s
-WLComponent	include/init_window.h	/^}typedef WLComponent;$/;"	t
-WLCursor	include/init_window.h	/^struct WLCursor$/;"	s
-WLCursor	include/init_window.h	/^}typedef WLCursor;$/;"	t
-WLDispInfo	include/init_window.h	/^struct WLDispInfo$/;"	s
-WLDispInfo	include/init_window.h	/^}typedef WLDispInfo;$/;"	t
-WLInputDev	include/init_window.h	/^struct WLInputDev$/;"	s
-WLInputDev	include/init_window.h	/^}typedef WLInputDev;$/;"	t
-WLManager	include/init_window.h	/^class WLManager$/;"	c
-WLManager	src/init_window.cpp	/^WLManager::WLManager()$/;"	f	class:WLManager
-WLWindow	include/init_window.h	/^struct WLWindow$/;"	s
-WLWindow	include/init_window.h	/^}typedef WLWindow;$/;"	t
-__INIT_WINDOW_INCLUDED_H__	include/init_window.h	2;"	d
-compositor	include/init_window.h	/^	struct wl_compositor *compositor;$/;"	m	struct:WLComponent	typeref:struct:WLComponent::wl_compositor
+SetGLAttribLocation	src/gl_manager.cpp	/^int GLShader::SetGLAttribLocation(GLenum type, const char* attri_name)$/;"	f	class:GLShader
+SetGLUniformLocation	src/gl_manager.cpp	/^int GLShader::SetGLUniformLocation(GLenum type, const char* uniform_name)$/;"	f	class:GLShader
+Start	src/wayland_manager.cpp	/^void WLManager::Start()$/;"	f	class:WLManager
+Stop	src/wayland_manager.cpp	/^void WLManager::Stop()$/;"	f	class:WLManager
+TEST_CODE	src/wayland_manager.cpp	4;"	d	file:
+WLComponent	include/wayland_manager.h	/^struct WLComponent$/;"	s
+WLComponent	include/wayland_manager.h	/^}typedef WLComponent;$/;"	t
+WLCursor	include/wayland_manager.h	/^struct WLCursor$/;"	s
+WLCursor	include/wayland_manager.h	/^}typedef WLCursor;$/;"	t
+WLDispInfo	include/wayland_manager.h	/^struct WLDispInfo$/;"	s
+WLDispInfo	include/wayland_manager.h	/^}typedef WLDispInfo;$/;"	t
+WLInputDev	include/wayland_manager.h	/^struct WLInputDev$/;"	s
+WLInputDev	include/wayland_manager.h	/^}typedef WLInputDev;$/;"	t
+WLManager	include/wayland_manager.h	/^class WLManager$/;"	c
+WLManager	src/wayland_manager.cpp	/^WLManager::WLManager()$/;"	f	class:WLManager
+WLManager	src/wayland_manager.cpp	/^WLManager::WLManager(char *window_title, int window_width, int window_height)$/;"	f	class:WLManager
+WLWindow	include/wayland_manager.h	/^struct WLWindow$/;"	s
+WLWindow	include/wayland_manager.h	/^}typedef WLWindow;$/;"	t
+__GL_MANAGER_H__	include/gl_manager.h	2;"	d
+__LOGGER_H__	include/common/Logger.h	2;"	d
+__WAYLAND_MANAGER_H__	include/wayland_manager.h	2;"	d
+compositor	include/wayland_manager.h	/^	struct wl_compositor *compositor;$/;"	m	struct:WLComponent	typeref:struct:WLComponent::wl_compositor
 const	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
-context	include/init_window.h	/^	EGLContext  context;$/;"	m	struct:EGLInfo
-destroy_window	src/init_window.cpp	/^void destroy_window() {$/;"	f
-disp_info	include/init_window.h	/^		WLDispInfo disp_info;$/;"	m	class:WLManager
-display	include/init_window.h	/^	EGLDisplay  display;$/;"	m	struct:EGLInfo
-draw	src/init_window.cpp	/^void draw() {$/;"	f
-egl_info	include/init_window.h	/^	EGLInfo egl_info;$/;"	m	struct:WLDispInfo
-egl_window	include/init_window.h	/^	struct wl_egl_window *egl_window;$/;"	m	struct:WLDispInfo	typeref:struct:WLDispInfo::wl_egl_window
-exist_seat	include/init_window.h	/^	bool exist_seat;$/;"	m	struct:WLComponent
-global_registry_handler	src/init_window.cpp	/^static void global_registry_handler(void *data, struct wl_registry *registry, uint32_t id, const char *interface, uint32_t version) {$/;"	f	file:
-global_registry_remover	src/init_window.cpp	/^static void global_registry_remover$/;"	f	file:
+context	include/wayland_manager.h	/^	EGLContext  context;$/;"	m	struct:EGLInfo
+disp_info	include/wayland_manager.h	/^		WLDispInfo disp_info;$/;"	m	class:WLManager
+display	include/wayland_manager.h	/^	EGLDisplay  display;$/;"	m	struct:EGLInfo
+eglErrorMap	include/gl_manager.h	/^static std::map<int, const char*> eglErrorMap = {$/;"	v
+egl_info	include/wayland_manager.h	/^	EGLInfo egl_info;$/;"	m	struct:WLDispInfo
+egl_window	include/wayland_manager.h	/^	struct wl_egl_window *egl_window;$/;"	m	struct:WLDispInfo	typeref:struct:WLDispInfo::wl_egl_window
+exist_seat	include/wayland_manager.h	/^	bool exist_seat;$/;"	m	struct:WLComponent
+fShaderStr	src/wayland_manager.cpp	/^const char fShaderStr[] =  $/;"	v
+f_shader	include/gl_manager.h	/^		GLuint f_shader;$/;"	m	class:GLShader
+frag_member	include/gl_manager.h	/^		std::map<const char*, GLint> frag_member;$/;"	m	class:GLShader
+glErrorMap	include/gl_manager.h	/^static std::map<int, const char*> glErrorMap = {$/;"	v
+global_registry_handle	src/wayland_manager.cpp	/^static void global_registry_handle(void *data, struct wl_registry *registry, uint32_t id, const char *interface, uint32_t version) $/;"	f	file:
+global_registry_remover	src/wayland_manager.cpp	/^static void global_registry_remover(void *data, struct wl_registry *registry, uint32_t id) $/;"	f	file:
+height	include/wayland_manager.h	/^	uint16_t height;$/;"	m	struct:WLDispInfo
 info_arch	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
 info_arch	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
 info_compiler	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
@@ -496,53 +517,58 @@ info_version	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const
 info_version	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version[] = {$/;"	v
 info_version_internal	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_version_internal[] = {$/;"	v
 info_version_internal	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v
-init_wayland_display	src/init_window.cpp	/^void init_wayland_display(WLDispInfo *disp_info, WLComponent *wl_component)$/;"	f
-input_dev	include/init_window.h	/^		WLInputDev input_dev;$/;"	m	class:WLManager
-keyboard	include/init_window.h	/^	struct wl_keyboard *keyboard;$/;"	m	struct:WLInputDev	typeref:struct:WLInputDev::wl_keyboard
-keyboard_handler_enter	src/init_window.cpp	/^static void keyboard_handler_enter( void* data, struct wl_keyboard* keyboard,  uint32_t serial, struct wl_surface* surface, struct wl_array* key )$/;"	f	file:
-keyboard_handler_key	src/init_window.cpp	/^static void keyboard_handler_key( void* data, struct wl_keyboard* keyboard, uint32_t serial, uint32_t time, uint32_t key, uint32_t state )$/;"	f	file:
-keyboard_handler_keymap	src/init_window.cpp	/^static void keyboard_handler_keymap( void* data, struct wl_keyboard* keyboard,  uint32_t format, int fd, uint32_t size )$/;"	f	file:
-keyboard_handler_leave	src/init_window.cpp	/^static void keyboard_handler_leave( void* data, struct wl_keyboard* keyboard, uint32_t serial, struct wl_surface* surface )$/;"	f	file:
-keyboard_handler_modifiers	src/init_window.cpp	/^static void  keyboard_handler_modifiers( void* data, struct wl_keyboard* keyboard, uint32_t serial, uint32_t mods_depressed, uint32_t mods_latched, uint32_t mods_locked, uint32_t group )$/;"	f	file:
-keyboard_listeners	src/init_window.cpp	/^static struct wl_keyboard_listener keyboard_listeners = {$/;"	v	typeref:struct:wl_keyboard_listener	file:
-last_click	src/init_window.cpp	/^unsigned long last_click = 0;$/;"	v
+input_dev	include/wayland_manager.h	/^	WLInputDev input_dev;$/;"	m	struct:WLComponent
+is_rendering	include/wayland_manager.h	/^		bool is_rendering = false;$/;"	m	class:WLManager
+keyboard	include/wayland_manager.h	/^	struct wl_keyboard *keyboard;$/;"	m	struct:WLInputDev	typeref:struct:WLInputDev::wl_keyboard
+keyboard_handle_enter	src/wayland_manager.cpp	/^static void keyboard_handle_enter( void* data, struct wl_keyboard* keyboard,  uint32_t serial, struct wl_surface* surface, struct wl_array* key )$/;"	f	file:
+keyboard_handle_key	src/wayland_manager.cpp	/^static void keyboard_handle_key( void* data, struct wl_keyboard* keyboard, uint32_t serial, uint32_t time, uint32_t key, uint32_t state )$/;"	f	file:
+keyboard_handle_keymap	src/wayland_manager.cpp	/^static void keyboard_handle_keymap( void* data, struct wl_keyboard* keyboard,  uint32_t format, int fd, uint32_t size )$/;"	f	file:
+keyboard_handle_leave	src/wayland_manager.cpp	/^static void keyboard_handle_leave( void* data, struct wl_keyboard* keyboard, uint32_t serial, struct wl_surface* surface )$/;"	f	file:
+keyboard_handle_modifiers	src/wayland_manager.cpp	/^static void  keyboard_handle_modifiers( void* data, struct wl_keyboard* keyboard, uint32_t serial, uint32_t mods_depressed, uint32_t mods_latched, uint32_t mods_locked, uint32_t group )$/;"	f	file:
+keyboard_listeners	src/wayland_manager.cpp	/^static struct wl_keyboard_listener keyboard_listeners = {$/;"	v	typeref:struct:wl_keyboard_listener	file:
 main	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
 main	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f
-main	src/init_window.cpp	/^int main() $/;"	f
-mouse	include/init_window.h	/^	struct wl_pointer *mouse;$/;"	m	struct:WLInputDev	typeref:struct:WLInputDev::wl_pointer
-native_display	include/init_window.h	/^	EGLNativeDisplayType native_display;$/;"	m	struct:EGLInfo
-native_window	include/init_window.h	/^	EGLNativeWindowType native_window;$/;"	m	struct:EGLInfo
-pointer_handler_axis	src/init_window.cpp	/^static void pointer_handler_axis( void* data, struct wl_pointer* pointer, uint32_t time, uint32_t axis, wl_fixed_t value )$/;"	f	file:
-pointer_handler_button	src/init_window.cpp	/^static void pointer_handler_button( void* data, struct wl_pointer* pointer, uint32_t serial, uint32_t time, uint32_t button, uint32_t status )$/;"	f	file:
-pointer_handler_enter	src/init_window.cpp	/^static void pointer_handler_enter( void* data,  struct wl_pointer* pointer, uint32_t serial,  struct wl_surface* surface,  wl_fixed_t sx, wl_fixed_t sy )$/;"	f	file:
-pointer_handler_leave	src/init_window.cpp	/^static void pointer_handler_leave( void* data, struct wl_pointer* pointer, uint32_t serial, struct wl_surface* surface )$/;"	f	file:
-pointer_handler_motion	src/init_window.cpp	/^static void pointer_handler_motion( void* data, struct wl_pointer* pointer, uint32_t time, wl_fixed_t sx, wl_fixed_t sy )$/;"	f	file:
-pointer_listeners	src/init_window.cpp	/^static struct wl_pointer_listener pointer_listeners = {$/;"	v	typeref:struct:wl_pointer_listener	file:
+main	src/main.cpp	/^int main() $/;"	f
+mouse	include/wayland_manager.h	/^	struct wl_pointer *mouse;$/;"	m	struct:WLInputDev	typeref:struct:WLInputDev::wl_pointer
+native_display	include/wayland_manager.h	/^	EGLNativeDisplayType native_display;$/;"	m	struct:EGLInfo
+native_window	include/wayland_manager.h	/^	EGLNativeWindowType native_window;$/;"	m	struct:EGLInfo
+pointer_handle_axis	src/wayland_manager.cpp	/^static void pointer_handle_axis( void* data, struct wl_pointer* pointer, uint32_t time, uint32_t axis, wl_fixed_t value )$/;"	f	file:
+pointer_handle_button	src/wayland_manager.cpp	/^static void pointer_handle_button( void* data, struct wl_pointer* pointer, uint32_t serial, uint32_t time, uint32_t button, uint32_t status )$/;"	f	file:
+pointer_handle_enter	src/wayland_manager.cpp	/^static void pointer_handle_enter( void* data,  struct wl_pointer* pointer, uint32_t serial,  struct wl_surface* surface,  wl_fixed_t sx, wl_fixed_t sy )$/;"	f	file:
+pointer_handle_leave	src/wayland_manager.cpp	/^static void pointer_handle_leave( void* data, struct wl_pointer* pointer, uint32_t serial, struct wl_surface* surface )$/;"	f	file:
+pointer_handle_motion	src/wayland_manager.cpp	/^static void pointer_handle_motion( void* data, struct wl_pointer* pointer, uint32_t time, wl_fixed_t sx, wl_fixed_t sy )$/;"	f	file:
+pointer_listeners	src/wayland_manager.cpp	/^static struct wl_pointer_listener pointer_listeners = {$/;"	v	typeref:struct:wl_pointer_listener	file:
+program	include/gl_manager.h	/^		GLuint program;$/;"	m	class:GLShader
 qnxnto	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
 qnxnto	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
-region	include/init_window.h	/^	struct wl_region *region;$/;"	m	struct:WLDispInfo	typeref:struct:WLDispInfo::wl_region
-registry	include/init_window.h	/^	struct wl_registry *registry;$/;"	m	struct:WLDispInfo	typeref:struct:WLDispInfo::wl_registry
-registry_listener	src/init_window.cpp	/^const struct wl_registry_listener registry_listener = {$/;"	v	typeref:struct:wl_registry_listener
-seat	include/init_window.h	/^	struct wl_seat *seat;$/;"	m	struct:WLComponent	typeref:struct:WLComponent::wl_seat
-seat_handler_capabilities	src/init_window.cpp	/^static void seat_handler_capabilities(void *data, struct wl_seat *in_seat, uint32_t caps)$/;"	f	file:
-seat_listener	src/init_window.cpp	/^static struct wl_seat_listener seat_listener = $/;"	v	typeref:struct:wl_seat_listener	file:
-serial	include/init_window.h	/^	uint32_t serial;$/;"	m	struct:WLCursor
-shell	include/init_window.h	/^	struct wl_shell *shell;$/;"	m	struct:WLComponent	typeref:struct:WLComponent::wl_shell
-shell_surface	include/init_window.h	/^	struct wl_shell_surface *shell_surface;$/;"	m	struct:WLWindow	typeref:struct:WLWindow::wl_shell_surface
-shell_surface_configure	src/init_window.cpp	/^void shell_surface_configure(void *data, struct wl_shell_surface *shell_surface, uint32_t edges, int32_t width, int32_t height) $/;"	f
-shell_surface_listener	src/init_window.cpp	/^static struct wl_shell_surface_listener shell_surface_listener = {$/;"	v	typeref:struct:wl_shell_surface_listener	file:
-shell_surface_ping	src/init_window.cpp	/^void shell_surface_ping (void *data, struct wl_shell_surface *shell_surface, uint32_t serial) $/;"	f
-shell_surface_popup_done	src/init_window.cpp	/^void shell_surface_popup_done(void *data, struct wl_shell_surface *shell_surface) {$/;"	f
-surface	include/init_window.h	/^	EGLSurface  surface;$/;"	m	struct:EGLInfo
-surface	include/init_window.h	/^	struct wl_surface *surface;$/;"	m	struct:WLWindow	typeref:struct:WLWindow::wl_surface
-touchpad	include/init_window.h	/^	struct wl_touch *touchpad;$/;"	m	struct:WLInputDev	typeref:struct:WLInputDev::wl_touch
+region	include/wayland_manager.h	/^	struct wl_region *region;$/;"	m	struct:WLDispInfo	typeref:struct:WLDispInfo::wl_region
+registry	include/wayland_manager.h	/^	struct wl_registry *registry;$/;"	m	struct:WLDispInfo	typeref:struct:WLDispInfo::wl_registry
+registry_listener	src/wayland_manager.cpp	/^const struct wl_registry_listener registry_listener = {$/;"	v	typeref:struct:wl_registry_listener
+seat	include/wayland_manager.h	/^	struct wl_seat *seat;$/;"	m	struct:WLComponent	typeref:struct:WLComponent::wl_seat
+seat_handle_capabilities	src/wayland_manager.cpp	/^static void seat_handle_capabilities(void *data, struct wl_seat *in_seat, uint32_t caps)$/;"	f	file:
+seat_listener	src/wayland_manager.cpp	/^static struct wl_seat_listener seat_listener = $/;"	v	typeref:struct:wl_seat_listener	file:
+serial	include/wayland_manager.h	/^	uint32_t serial;$/;"	m	struct:WLCursor
+shell	include/wayland_manager.h	/^	struct wl_shell *shell;$/;"	m	struct:WLComponent	typeref:struct:WLComponent::wl_shell
+shell_surface	include/wayland_manager.h	/^	struct wl_shell_surface *shell_surface;$/;"	m	struct:WLWindow	typeref:struct:WLWindow::wl_shell_surface
+shell_surface_configure	src/wayland_manager.cpp	/^void shell_surface_configure(void *data, struct wl_shell_surface *shell_surface, uint32_t edges, int32_t width, int32_t height) $/;"	f
+shell_surface_listener	src/wayland_manager.cpp	/^static struct wl_shell_surface_listener shell_surface_listener = {$/;"	v	typeref:struct:wl_shell_surface_listener	file:
+shell_surface_ping	src/wayland_manager.cpp	/^void shell_surface_ping(void *data, struct wl_shell_surface *shell_surface, uint32_t serial) $/;"	f
+shell_surface_popup_done	src/wayland_manager.cpp	/^void shell_surface_popup_done(void *data, struct wl_shell_surface *shell_surface) $/;"	f
+surface	include/wayland_manager.h	/^	EGLSurface  surface;$/;"	m	struct:EGLInfo
+surface	include/wayland_manager.h	/^	struct wl_surface *surface;$/;"	m	struct:WLWindow	typeref:struct:WLWindow::wl_surface
+testShader	src/wayland_manager.cpp	/^GLShader *testShader;$/;"	v
+touchpad	include/wayland_manager.h	/^	struct wl_touch *touchpad;$/;"	m	struct:WLInputDev	typeref:struct:WLInputDev::wl_touch
+vShaderStr	src/wayland_manager.cpp	/^const char vShaderStr[] =  $/;"	v
+v_shader	include/gl_manager.h	/^		GLuint v_shader;$/;"	m	class:GLShader
+vert_member	include/gl_manager.h	/^		std::map<const char*, GLint> vert_member;$/;"	m	class:GLShader
 volatile	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	11;"	d	file:
-window_height	include/init_window.h	/^	uint16_t window_height;$/;"	m	struct:WLDispInfo
-window_width	include/init_window.h	/^	uint16_t window_width;$/;"	m	struct:WLDispInfo
-wl_component	include/init_window.h	/^		WLComponent wl_component;$/;"	m	class:WLManager
-wl_cursor	include/init_window.h	/^		WLCursor wl_cursor;$/;"	m	class:WLManager
-wl_disp	include/init_window.h	/^	struct wl_display *wl_disp;$/;"	m	struct:WLDispInfo	typeref:struct:WLDispInfo::wl_display
-x	include/init_window.h	/^	int x;$/;"	m	struct:WLCursor
-y	include/init_window.h	/^	int y;$/;"	m	struct:WLCursor
-~WLManager	src/init_window.cpp	/^WLManager::~WLManager()$/;"	f	class:WLManager
+width	include/wayland_manager.h	/^	uint16_t width;$/;"	m	struct:WLDispInfo
+window	include/wayland_manager.h	/^		WLWindow window;$/;"	m	class:WLManager
+wl_component	include/wayland_manager.h	/^		WLComponent wl_component;$/;"	m	class:WLManager
+wl_cursor	include/wayland_manager.h	/^	WLCursor wl_cursor;$/;"	m	struct:WLInputDev
+wl_disp	include/wayland_manager.h	/^	struct wl_display *wl_disp;$/;"	m	struct:WLDispInfo	typeref:struct:WLDispInfo::wl_display
+x	include/wayland_manager.h	/^	int x;$/;"	m	struct:WLCursor
+y	include/wayland_manager.h	/^	int y;$/;"	m	struct:WLCursor
+~GLShader	src/gl_manager.cpp	/^GLShader::~GLShader()$/;"	f	class:GLShader
+~WLManager	src/wayland_manager.cpp	/^WLManager::~WLManager()$/;"	f	class:WLManager

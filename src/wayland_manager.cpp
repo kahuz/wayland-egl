@@ -340,7 +340,7 @@ EGLBoolean WLManager::CreateWindowWithEGLContext(const char* title, int width, i
 	ret =  CreateEGLContext( &disp_info.egl_info );
 
 #ifdef TEST_CODE
-	testShader = new GLShader(vShaderStr, fShaderStr);
+	testShader = new GLShader("/home/kahuz/Share/wayland-manager/my.vshader", "/home/kahuz/Share/wayland-manager/my.fshader");
 	testShader->SetGLAttribLocation(GL_VERTEX_SHADER, "vPosition");
 #endif
 	wl_shell_surface_add_listener(window.shell_surface, &shell_surface_listener, &disp_info/* is send to listner*/);

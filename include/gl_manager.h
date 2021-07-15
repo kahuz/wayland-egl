@@ -59,6 +59,7 @@ class GLShader
 
 	private:
 		GLuint CreateShader(GLenum type, const char *shader_src);
+		GLuint LoadShader(GLenum type, const char *shader_path);
 
 };
 

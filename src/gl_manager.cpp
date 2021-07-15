@@ -1,4 +1,7 @@
 #include <memory>
+#include <iostream>
+#include <fstream>
+#include <string>
 
 #include "gl_manager.h"
 #include "Logger.h"
@@ -25,8 +28,13 @@ GLShader::GLShader(const char* vertex_src, const char* fragment_src)
 {
 	program = glCreateProgram();
     v_shader = CreateShader(GL_VERTEX_SHADER, vertex_src);
+	//add your vertex shader path
+    //v_shader = LoadShader(GL_VERTEX_SHADER, vertex_src);
 	Log("vertex src\n %s",vertex_src);
-    f_shader = CreateShader(GL_FRAGMENT_SHADER, fragment_src);
+
+	f_shader = CreateShader(GL_FRAGMENT_SHADER, fragment_src);
+	//add your fragment shader path
+	//f_shader = LoadShader(GL_FRAGMENT_SHADER, fragment_src);
 	Log("fragment src\n %s",fragment_src);
 
 	glAttachShader(program, v_shader);
@@ -69,6 +77,34 @@ GLuint GLShader::CreateShader(GLenum type, const char *shader_src)
     }
 
     return shader_id;
+}
+
+GLuint GLShader::LoadShader(GLenum type, const char *shader_path)
+{
+	GLuint shader_id = -1;
+	std::string shader_src;
+
+	std::ifstream shaderStream(shader_path, std::ios::in);
+	
+	if(shaderStream.is_open())
+	{
+		std::string cur_line = "";
+
+		while(getline(shaderStream, cur_line))
+		{
+			shader_src += "\n" + cur_line;
+		}
+		shaderStream.close();
+	}else
+	{
+		Err("Don't open %s", shader_path);
+		getchar();
+		return 0;
+	}
+
+	shader_id = CreateShader(type, shader_src.c_str());
+
+	return shader_id;
 }
 
 int GLShader::SetGLAttribLocation(GLenum type, const char* attri_name)
