@@ -44,6 +44,12 @@ static struct wl_pointer_listener pointer_listeners = {
 	pointer_handle_motion,pointer_handle_button, pointer_handle_axis,
 };
 
+static const struct wl_touch_listener touch_listener = {
+	touch_handle_down, touch_handle_up,
+	touch_handle_motion,
+	touch_handle_frame,	touch_handle_cancel,
+};
+
 static void global_registry_handle(void *data, struct wl_registry *registry, uint32_t id, const char *interface, uint32_t version) 
 {
 	WLComponent *component = (WLComponent *)data;
@@ -119,6 +125,18 @@ static void seat_handle_capabilities(void *data, struct wl_seat *in_seat, uint32
 	{
 		wl_keyboard_destroy( dev->keyboard );
 		dev->keyboard = NULL;
+	}
+	
+	if (caps & WL_SEAT_CAPABILITY_TOUCH)
+	{
+		dev->touchpad = wl_seat_get_touch(in_seat);
+		wl_touch_set_user_data(dev->touchpad, data);
+		wl_touch_add_listener(dev->touchpad, &touch_listener, data);
+	}
+	else if (!(caps & WL_SEAT_CAPABILITY_TOUCH))
+	{
+		wl_touch_destroy(dev->touchpad);
+		dev->touchpad = NULL;
 	}
 }
 
@@ -211,6 +229,33 @@ static void pointer_handle_axis( void* data, struct wl_pointer* pointer, uint32_
 {
 
 }
+
+static void touch_handle_down(void *data, struct wl_touch *wl_touch, uint32_t serial, uint32_t time, struct wl_surface *surface, int32_t id, wl_fixed_t x_w, wl_fixed_t y_w)
+{
+}
+
+static void touch_handle_up(void *data, struct wl_touch *wl_touch, uint32_t serial, uint32_t time, int32_t id)
+{
+}
+
+static void touch_handle_motion(void *data, struct wl_touch *wl_touch, uint32_t time, int32_t id, wl_fixed_t x_w, wl_fixed_t y_w)
+{
+	WLCursor *cursor = (WLCursor *)data;
+
+	cursor->x = wl_fixed_to_double(x_w);
+	cursor->y = wl_fixed_to_double(y_w);
+
+	printf("Moving x : %.1f y : %.1f\n", cursor->x, cursor->y);
+}
+
+static void touch_handle_frame(void *data, struct wl_touch *wl_touch)
+{
+}
+
+static void touch_handle_cancel(void *data, struct wl_touch *wl_touch)
+{
+}
+
 WLManager::WLManager()
 {
 	Init();

@@ -144,5 +144,10 @@ static void pointer_handle_leave( void* data, struct wl_pointer* pointer, uint32
 static void pointer_handle_motion( void* data, struct wl_pointer* pointer, uint32_t time, wl_fixed_t sx, wl_fixed_t sy );
 static void pointer_handle_button( void* data, struct wl_pointer* pointer, uint32_t serial, uint32_t time, uint32_t button, uint32_t status );
 static void pointer_handle_axis( void* data, struct wl_pointer* pointer, uint32_t time, uint32_t axis, wl_fixed_t value );
+static void touch_handle_down(void *data, struct wl_touch *wl_touch, uint32_t serial, uint32_t time, struct wl_surface *surface, int32_t id, wl_fixed_t x_w, wl_fixed_t y_w);
+static void touch_handle_up(void *data, struct wl_touch *wl_touch, uint32_t serial, uint32_t time, int32_t id);
+static void touch_handle_motion(void *data, struct wl_touch *wl_touch, uint32_t time, int32_t id, wl_fixed_t x_w, wl_fixed_t y_w);
+static void touch_handle_frame(void *data, struct wl_touch *wl_touch);
+static void touch_handle_cancel(void *data, struct wl_touch *wl_touch);
 
 #endif //#ifndef __WAYLAND_MANAGER_H__
